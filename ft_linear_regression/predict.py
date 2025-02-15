@@ -1,20 +1,22 @@
 import numpy as np
 
-def estimate_price(mileage, theta0, theta1):
-    return theta0 + (theta1 * mileage)
+def estimate_price(mileage, theta0, theta1, mileage_mean, mileage_std):
+    # Normalize the input mileage
+    normalized_mileage = (mileage - mileage_mean) / mileage_std
+    return theta0 + (theta1 * normalized_mileage)
 
-def load_thetas():
+def load_parameters():
     try:
-        # Load theta values from file
-        thetas = np.loadtxt('theta_values.txt')
-        return thetas[0], thetas[1]
+        # Load theta values and normalization parameters from file
+        params = np.loadtxt('theta_values.txt')
+        return params[0], params[1], params[2], params[3], params[4], params[5]
     except:
-        # Return default values if file doesn't exist
-        return 0, 0
+        print("Error: Could not load model parameters")
+        return 0, 0, 0, 1, 0, 1
 
 def main():
     # Load trained parameters
-    theta0, theta1 = load_thetas()
+    theta0, theta1, mileage_mean, mileage_std, price_mean, price_std = load_parameters()
 
     try:
         # Get mileage input from user
@@ -24,8 +26,10 @@ def main():
             return
 
         # Calculate and display estimated price
-        estimated_price = estimate_price(mileage, theta0, theta1)
-        print(f"Estimated price for {mileage} miles: ${estimated_price:,.2f}")
+        estimated_price = estimate_price(mileage, theta0, theta1, mileage_mean, mileage_std)
+        # Denormalize the price
+        final_price = estimated_price * price_std + price_mean
+        print(f"Estimated price for {mileage} miles: ${final_price:,.2f}")
 
     except ValueError:
         print("Error: Please enter a valid number for mileage")
