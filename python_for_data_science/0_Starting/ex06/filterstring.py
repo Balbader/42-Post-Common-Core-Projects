@@ -3,7 +3,14 @@ from ft_filter import ft_filter
 
 
 def main():
-    """Main function to filter strings based on length"""
+    """
+    Main function to filter strings based on length
+    This function takes two arguments:
+    - A string of words separated by spaces
+    - An integer n
+    It filters the words in the string to include
+    only those with length greater than n and prints the result.
+    """
     try:
         # Check if we have exactly 2 arguments (excluding script name)
         assert len(sys.argv) == 3, "the arguments are bad"
