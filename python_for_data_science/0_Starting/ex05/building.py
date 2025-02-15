@@ -3,7 +3,20 @@ import string
 
 
 def count_characters(text):
-    """Count different types of characters in the given text."""
+    """
+    Count and display the number of different types of characters in the text.
+
+    This function analyzes the input text and prints the count of:
+    - Upper case letters
+    - Lower case letters
+    - Punctuation marks
+    - Spaces
+    - Digits
+    - Total characters
+
+    Args:
+        text (str): The input text to analyze
+    """
     upper_count = sum(1 for c in text if c.isupper())
     lower_count = sum(1 for c in text if c.islower())
     punct_count = sum(1 for c in text if c in string.punctuation)
@@ -21,6 +34,18 @@ def count_characters(text):
 
 
 def main():
+    """
+    Handle program execution and input processing.
+
+    This function manages the program flow by:
+    - Validating command line arguments
+    - Getting text either from command line or user input
+    - Handling potential errors
+    - Calling the character counting function
+
+    Raises:
+        AssertionError: If more than one command line argument is provided
+    """
     # Check number of arguments
     if len(sys.argv) > 2:
         raise AssertionError("more than one argument provided")
