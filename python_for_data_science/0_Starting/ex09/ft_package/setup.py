@@ -8,7 +8,8 @@ setup(
     description="A sample test package",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
-    url="https://github.com/balbader/ft_package",
+    url="https://github.com/Balbader/42-Post-Common-Core-Projects\
+        /tree/main/python_for_data_science/0_Starting/ex09/ft_package",
     packages=find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
