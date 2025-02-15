@@ -68,5 +68,14 @@ def main():
     print(f"Theta0: {theta0:.4f}")
     print(f"Theta1: {theta1:.4f}")
 
+    # Add visualization after training
+    try:
+        from visualize import plot_regression
+        print("\nGenerating visualization and performance metrics...")
+        plot_regression()
+    except ImportError:
+        print("\nNote: Install matplotlib and scikit-learn to see visualization and metrics")
+        print("pip install matplotlib scikit-learn")
+
 if __name__ == "__main__":
     main()
