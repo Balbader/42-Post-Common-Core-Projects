@@ -13,7 +13,12 @@ def main():
     # Load the data
     data = load("../resources/population_total.csv")
     if data is None:
+        print("Error: Failed to load data")
         return
+
+    # Print debug information
+    print("Data loaded successfully")
+    print("Available countries:", data.index.tolist())
 
     # Select countries to compare (France and Spain as examples)
     country1 = "France"
@@ -24,9 +29,17 @@ def main():
         country1_data = data.loc[country1]
         country2_data = data.loc[country2]
 
+        print(f"Found data for {country1} and {country2}")
+
         # Convert years to numeric and filter for 1800-2050
         years = [year for year in country1_data.index
                  if year.isdigit() and 1800 <= int(year) <= 2050]
+
+        if not years:
+            print("Error: No valid years found in the data")
+            return
+
+        print(f"Years range: {years[0]} to {years[-1]}")
 
         # Convert population values to numeric, removing 'M' and 'k' suffixes
         def convert_population(value):
