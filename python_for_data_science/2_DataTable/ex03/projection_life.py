@@ -5,7 +5,22 @@ import matplotlib.pyplot as plt
 def main():
     """
     Visualizes the relationship between GDP per capita and life expectancy
-    for the year 1900 using data from two CSV files.
+    in 1900.
+
+    Creates a scatter plot comparing the GDP per capita(adjusted for inflation)
+    against life expectancy for different countries in the year 1900.
+    The GDP values are displayed on a logarithmic scale for bettervisualization
+    of the wide range of values.
+
+    The function:
+    - Loads two CSV datasets: income data and life expectancy data
+    - Extracts data for the year 1900
+    - Creates a scatter plot with GDP per capita on x-axis and life expectancy
+      on y-axis
+    - Adds appropriate labels, title, and grid
+
+    Returns:
+        None
     """
     # Load the datasets
     income_data =\
