@@ -1,26 +1,5 @@
-import pandas as pd
 import matplotlib.pyplot as plt
-
-
-def load(path: str) -> pd.DataFrame:
-    """
-    Load and return data from a CSV file as a pandas DataFrame.
-
-    Args:
-        path (str): Path to the CSV file to be loaded.
-
-    Returns:
-        pd.DataFrame: The loaded data if successful, None otherwise.
-            Prints the dimensions of the loaded dataset if successful.
-            Prints an error message if the loading fails.
-    """
-    try:
-        data = pd.read_csv(path)
-        print("Loading dataset of dimensions", data.shape)
-        return data
-    except Exception as e:
-        print(f"Error loading dataset: {e}")
-        return None
+from load_csv import load
 
 
 def main():
