@@ -11,7 +11,7 @@ def main():
     the population trends for both countries over time.
     """
     # Load the data
-    data = load("../resources/population_total.csv")
+    data = load("population_total.csv")
     if data is None:
         print("Error: Failed to load data")
         return
@@ -26,8 +26,8 @@ def main():
 
     # Get the data for selected countries
     try:
-        country1_data = data.loc[country1]
-        country2_data = data.loc[country2]
+        country1_data = data.loc[data['country'] == country1]
+        country2_data = data.loc[data['country'] == country2]
 
         print(f"Found data for {country1} and {country2}")
 
@@ -59,11 +59,13 @@ def main():
         plt.plot(years, pop2, label=country2, marker='o')
 
         # Customize the plot
-        plt.title(f'Population Growth: {country1} vs {country2} (1800-2050)')
-        plt.xlabel('Year')
-        plt.ylabel('Population')
-        plt.legend()
-        plt.grid(True)
+        plt.title(f'Population Projections Comparison\n\
+                  {country1} vs {country2} (1800-2050)',
+                  pad=20, fontsize=12)
+        plt.xlabel('Year', fontsize=10)
+        plt.ylabel('Population (in millions)', fontsize=10)
+        plt.legend(title='Countries', loc='upper left')
+        plt.grid(True, linestyle='--', alpha=0.7)
 
         # Rotate x-axis labels for better readability
         plt.xticks(rotation=45)
@@ -73,7 +75,7 @@ def main():
             plt.FuncFormatter(lambda x, p: f'{int(x/1000000)}M'))
 
         plt.tight_layout()
-        plt.show()
+        plt.show(block=True)
 
     except KeyError as e:
         print(f"Error: Country not found in dataset - {e}")
