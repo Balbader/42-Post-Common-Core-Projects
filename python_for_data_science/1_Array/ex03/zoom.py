@@ -21,6 +21,13 @@ def zoom_image(image_path="animal.jpeg"):
         Exception: For other potential errors during image processing.
     """
     try:
+        # Check file extension
+        valid_extensions = ['.jpg', '.jpeg', '.png', '.bmp']
+        file_extension = image_path.lower()[image_path.rfind('.'):]
+        if file_extension not in valid_extensions:
+            raise ValueError(f"Unsupported file format. Supported formats: \
+                            {', '.join(valid_extensions)}")
+
         # Load the image
         img = Image.open(image_path)
         img_array = np.array(img)
