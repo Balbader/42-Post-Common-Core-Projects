@@ -3,7 +3,17 @@ import matplotlib.pyplot as plt
 
 
 def load(path: str) -> pd.DataFrame:
-    """Load a dataset from a CSV file and return a pandas DataFrame."""
+    """
+    Load and return data from a CSV file as a pandas DataFrame.
+
+    Args:
+        path (str): Path to the CSV file to be loaded.
+
+    Returns:
+        pd.DataFrame: The loaded data if successful, None otherwise.
+            Prints the dimensions of the loaded dataset if successful.
+            Prints an error message if the loading fails.
+    """
     try:
         data = pd.read_csv(path)
         print("Loading dataset of dimensions", data.shape)
@@ -14,6 +24,16 @@ def load(path: str) -> pd.DataFrame:
 
 
 def main():
+    """
+    Main function to execute the life expectancy visualization program.
+
+    Loads the life expectancy dataset, extracts data for a specific country,
+    and creates a line plot showing the evolution of life expectancy over time.
+    The plot includes proper title, axis labels, grid, and formatted axes.
+
+    Returns:
+        None
+    """
     # Load the dataset
     data = load("life_expectancy_years.csv")
     if data is None:
@@ -21,6 +41,9 @@ def main():
 
     # Assuming you're in France (adjust country name as needed)
     country = "France"
+    # country = "United States"
+    # country = "Japan"
+    # country = "Germany"
 
     # Get the data for the country
     country_data = data.loc[data['country'] == country]
