@@ -14,7 +14,8 @@ def slice_me(family: list, start: int, end: int) -> list:
         ValueError: If lists have different sizes or indices are invalid
     """
     # Check if family is a list and contains lists
-    if not isinstance(family, list) or not all(isinstance(row, list) for row in family):
+    if not isinstance(family, list) or not all(isinstance(row, list)
+                                               for row in family):
         raise TypeError("Input must be a list of lists")
 
     # Check if the array is empty
