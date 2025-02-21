@@ -4,24 +4,28 @@ from sklearn.metrics import r2_score
 from predict import estimate_price, load_parameters
 from train import load_data
 
+
 def plot_regression():
     # Load the data
     try:
         mileages, prices = load_data('data.csv')
-    except:
-        print("Error: Could not load data for visualization")
+    except Exception as e:
+        print(f"Error: Could not load data for visualization: {e}")
         return
 
     # Load model parameters
-    theta0, theta1, mileage_mean, mileage_std, price_mean, price_std = load_parameters()
+    theta0, theta1, mileage_mean, mileage_std, price_mean, price_std\
+        = load_parameters()
 
     # Create prediction line
     x = np.linspace(min(mileages), max(mileages), 100)
-    y = [estimate_price(xi, theta0, theta1, mileage_mean, mileage_std) * price_std + price_mean
+    y = [estimate_price(xi, theta0, theta1, mileage_mean, mileage_std)
+         * price_std + price_mean
          for xi in x]
 
     # Calculate R-squared score
-    y_pred = [estimate_price(m, theta0, theta1, mileage_mean, mileage_std) * price_std + price_mean
+    y_pred = [estimate_price(m, theta0, theta1, mileage_mean, mileage_std)
+              * price_std + price_mean
               for m in mileages]
     r2 = r2_score(prices, y_pred)
 
@@ -47,7 +51,7 @@ def plot_regression():
     plt.close()
 
     # Print metrics
-    print(f"\nModel Performance Metrics:")
+    print("\nModel Performance Metrics:")
     print(f"R² Score: {r2:.4f}")
 
     # Calculate Mean Absolute Error (MAE)
@@ -61,6 +65,7 @@ def plot_regression():
     # Calculate Root Mean Squared Error (RMSE)
     rmse = np.sqrt(mse)
     print(f"Root Mean Squared Error: ${rmse:,.2f}")
+
 
 if __name__ == "__main__":
     plot_regression()
