@@ -43,7 +43,6 @@ class Stark(Character):
 
     def __init__(self, first_name: str, is_alive: bool = True):
         """Constructor for Stark class
-
         Args:
             first_name (str): The Stark family member's first name
             is_alive (bool, optional): Character's living status.
