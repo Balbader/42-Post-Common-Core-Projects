@@ -6,7 +6,7 @@ def square(x: int | float) -> int | float:
 
     Returns:
         int | float: The square of the input number
-    """
+  """
     return x * x
 
 
