@@ -5,7 +5,6 @@ import (
 )
 
 func main() {
-
 	fmt.Println("Welcome to the To-Do List App")
 	fmt.Println("Watch out for the evil boss!")
 	fmt.Println("What do you want to do next?")
