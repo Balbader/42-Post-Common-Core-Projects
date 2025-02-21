@@ -1,5 +1,8 @@
 {
 	"workbench.tree.indent": 16,
 	"editor.defaultFormatter": "ms-python.flake8",
-	"editor.fontSize": 16
+	"editor.fontSize": 16,
+	"[go]": {
+		"editor.defaultFormatter": "golang.go"
+	}
 }
