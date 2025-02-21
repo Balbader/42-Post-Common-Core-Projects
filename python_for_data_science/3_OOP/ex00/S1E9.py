@@ -1,5 +1,21 @@
 from abc import ABC, abstractmethod
 
+""" This implementation:
+Creates an abstract base class Character with abstract
+methods __init__ and die
+
+Creates a concrete Stark class that inherits from Character
+and implements the required methods
+
+Includes proper docstrings for all classes and methods
+Handles the required parameters (first_name and optional is_alive)
+Implements the die() method to change is_alive to False
+
+The code will work with the provided test cases
+and will raise a TypeError if someone tries to instantiate
+the abstract Character class directly.
+"""
+
 
 class Character(ABC):
     """A Game of Thrones character class"""
