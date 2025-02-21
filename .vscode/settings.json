@@ -1,5 +1,5 @@
 {
 	"workbench.tree.indent": 16,
 	"editor.defaultFormatter": "ms-python.flake8",
-	"editor.fontSize": 12
+	"editor.fontSize": 16
 }
