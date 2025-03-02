@@ -11,3 +11,5 @@ def count_in_list(lst, item):
     """
 
     return lst.count(item)
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh
